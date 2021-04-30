@@ -1,0 +1,114 @@
+<div class="class" fxLayout fxFill fxLayoutAlign="space-around center">
+  <div fxLayout="column">
+    <div fxLayout="row" fxFlex="grow" fxLayoutAlign="space-between start" class="pb-4 pt-1">
+      <button mat-button mat-raised-button (click)="back()">
+        <mat-icon>arrow_back</mat-icon>Back
+      </button>
+      <div class="pl-3"><h2>{{id ? 'Edit' : 'Create' }} company</h2></div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" autocomplete="on" method="POST" novalidate="novalidate">
+      <div fxLayout="column">
+        <mat-form-field class="example-full-width" *ngIf="authInfo.user.role === 'super' && admins.length">
+          <input matInput
+                 placeholder="Administrator"
+                 aria-label="Administrator"
+                 [matAutocomplete]="auto"
+                 formControlName="owner">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
+            <mat-option *ngFor="let admin of filteredAdmins | async" [value]="admin.id">
+              <span>{{admin.name}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" name="name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Full Name</mat-label>
+          <input matInput type="text" name="fullname" formControlName="fullname">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>INN</mat-label>
+          <input matInput type="text" name="inn" formControlName="inn">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>KPP</mat-label>
+          <input matInput type="text" name="kpp" formControlName="kpp">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>OGRN</mat-label>
+          <input matInput type="text" name="ogrn" formControlName="ogrn">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Jur Address</mat-label>
+          <textarea matInput formControlName="juradress"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <textarea matInput formControlName="adress"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Bank Details</mat-label>
+          <textarea matInput formControlName="bankdetails"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>NDS</mat-label>
+          <input matInput type="text" name="nds" formControlName="nds">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Deogovor</mat-label>
+          <input matInput type="text" name="dogovor" formControlName="dogovor">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Dogovor Date</mat-label>
+          <input matInput [matDatepicker]="picker"
+                 formControlName="dogovordate"
+                 (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Country</mat-label>
+          <mat-select
+            formControlName="country"
+            (valueChange)="onCountry($event)">
+            <mat-option *ngFor="let country of countries" [value]="country.id">
+              {{country.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Foc</mat-label>
+          <mat-select
+            formControlName="foc"
+            (valueChange)="onFoc($event)">
+            <mat-option *ngFor="let foc of focs" [value]="foc.id">
+              {{foc.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Region</mat-label>
+          <mat-select
+            formControlName="region"
+            (valueChange)="onRegion($event)">
+            <mat-option *ngFor="let region of regions" [value]="region.id">
+              {{region.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="mt-3 mb-3">
+          <button type="submit" mat-button mat-raised-button>Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

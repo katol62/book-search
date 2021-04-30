@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0beta1 (32d4812, 2019-09-19)"
+   sodipodi:docname="up-arrow.svg"
+   id="svg19"
+   version="1.1"
+   viewBox="0 0 25 14"
+   height="14px"
+   width="25px">
+  <metadata
+     id="metadata25">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>icon/down-arrow/default</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs23" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg19"
+     inkscape:window-maximized="0"
+     inkscape:window-y="23"
+     inkscape:window-x="0"
+     inkscape:cy="58.598086"
+     inkscape:cx="39.016504"
+     inkscape:zoom="3.959798"
+     showgrid="false"
+     id="namedview21"
+     inkscape:window-height="809"
+     inkscape:window-width="1440"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     inkscape:document-rotation="0"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+  <title
+     id="title10">icon/down-arrow/default</title>
+  <desc
+     id="desc12">Created with Sketch.</desc>
+  <g
+     transform="matrix(1,0,0,-1.1143925,0,15.704408)"
+     fill-rule="evenodd"
+     fill="none"
+     stroke-width="1"
+     stroke="none"
+     id="icon/down-arrow/default">
+    <g
+       fill-rule="nonzero"
+       fill="#A6A6A6"
+       transform="rotate(-90,7,6.5)"
+       id="down-arrow">
+      <g
+         id="Shape"
+         transform="matrix(-1,0,0,1,13,0)">
+        <path
+           inkscape:connector-curvature="0"
+           id="path14"
+           d="M 12.08975,13.188273 2.6299931,23.507689 c -0.6017547,0.656778 -1.577397,0.656778 -2.17885961,0 -0.60151132,-0.656194 -0.60151132,-1.720478 0,-2.376619 L 8.8215575,11.999964 0.45137694,2.8691764 c -0.60151132,-0.6564598 -0.60151132,-1.7206374 0,-2.37683158 0.60151136,-0.65645976 1.57710486,-0.65645976 2.17885966,0 L 12.089993,10.81192 c 0.300756,0.328256 0.450963,0.758017 0.450963,1.187991 0,0.430185 -0.150499,0.860265 -0.451206,1.188362 z" />
+      </g>
+    </g>
+  </g>
+</svg>

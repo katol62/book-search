@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <div fxLayout="row" fxFlex="grow" fxLayoutAlign="space-between start">
+    <div fxFlex>
+      <button mat-button *ngFor="let tab of tabItems; let i=index"
+              [disabled]="tab.id === selectedTab"
+              (click)="selectTab(tab)">
+        {{tab.label}}
+      </button>
+    </div>
+  </div>
+  <div fxFlex>
+    <button mat-icon-button color="warn" title="Logout" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

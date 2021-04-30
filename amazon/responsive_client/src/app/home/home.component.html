@@ -1,0 +1,29 @@
+<div class="container-fluid pl-0 pr-0">
+    <lobby-menu
+            [authData]="authData"
+            [lobbyMenuItems]="lobbyMenuItems"
+            (menuClick)="onMenuClick($event)">
+    </lobby-menu>
+</div>
+<div class="d-flex justify-content-center align-items-center">
+    <div class="container-fluid container-lg mb-3 mt-3">
+
+        <div class="row mb-5 ml-auto mr-auto justify-content-center">
+            <app-promotions [promotions]="promotions"></app-promotions>
+        </div>
+
+        <div class="row ml-0 mr-0 mb-5">
+            <div class="col-12 text-center">
+                <button (click)="proceed()" type="button" class="btn btn-primary text-uppercase">Continue to poker lobby</button>
+            </div>
+        </div>
+
+        <div class="row w-100 mb-5 ml-auto mr-auto justify-content-center">
+            <div class="col-12 text-center">
+                <app-news [newsItems]="news"></app-news>
+            </div>
+        </div>
+    </div>
+
+</div>
+<app-footer *ngIf="!mobile"></app-footer>

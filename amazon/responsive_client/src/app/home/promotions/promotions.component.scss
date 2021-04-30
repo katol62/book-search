@@ -1,0 +1,52 @@
+:host {
+    display: flex;
+    width: 100% !important;
+    justify-content: center !important;
+
+}
+::ng-deep {
+    carousel {
+        .carousel-item {
+            margin-right: 0;
+        }
+
+        .carousel-item-next, .carousel-item-prev, .carousel-item.active {
+            padding: 0 3px;
+        }
+
+        .carousel-control {
+            width: 20px !important;
+            .carousel-control-next-icon, .carousel-control-prev-icon {
+                height: 35px;
+                background-size: cover;
+            }
+            &.carousel-control-prev {
+                left: -20px;
+            }
+            &.carousel-control-next {
+                right: -20px;
+            }
+        }
+        .carousel-indicators {
+            bottom: -40px;
+        }
+
+    }
+
+    @media (max-width: 320px) {
+        .carousel-item {
+            iframe {
+                min-height: 285px !important;
+            }
+        }
+    }
+    @media (min-width: 321px) and (max-width: 568px) and (orientation: landscape) {
+        .carousel-item {
+            iframe {
+                min-height: 265px !important;
+            }
+        }
+    }
+
+}
+

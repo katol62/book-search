@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <base href="/">
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready data:; child-src * gap://ready data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline'; media-src *; img-src * data: content: blob:;"/>
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <meta name="viewport" content='width=device-width, initial-scale=1.0, user-scalable=no'>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script>
+        // Phaser requirements
+        if (global === undefined) {
+            var global = window;
+        }
+    </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker.register("service-worker.js").then(
+                    function (registration) {
+                        console.log("ServiceWorker registration successful with scope: ", registration.scope);
+                    },
+                    function (err) {
+                        console.log("ServiceWorker registration failed: ", err);
+                    });
+
+                navigator.serviceWorker.register("renderer.js").then(
+                    function (registration) {
+                        console.log("Renderer Worker registration successful with scope: ", registration.scope);
+                    },
+                    function (err) {
+                        console.log("ServiceWorker registration failed: ", err);
+                    });
+            });
+
+            window.deferredPrompt = null;
+            window.addEventListener('beforeinstallprompt', function (e) {
+                console.log("BeforInstallPromt obtained", e);
+                // Prevent Chrome 67 and earlier from automatically showing the prompt
+                e.preventDefault();
+                // Stash the event so it can be triggered later.
+                window.deferredPrompt = e;
+            });
+
+            window.addEventListener('appinstalled', (evt) => {
+                // Log install to analytics
+                console.log('INSTALL: Success');
+            });
+        }
+    </script>
+    <script>
+        window.addEventListener = function () {
+            EventTarget.prototype.addEventListener.apply(this, arguments);
+        };
+        window.removeEventListener = function () {
+            EventTarget.prototype.removeEventListener.apply(this, arguments);
+        };
+        document.addEventListener = function () {
+            EventTarget.prototype.addEventListener.apply(this, arguments);
+        };
+        document.removeEventListener = function () {
+            EventTarget.prototype.removeEventListener.apply(this, arguments);
+        };
+    </script>
+    <script src="cordova.js" type="text/javascript" defer></script>
+    <script src="cordova_plugins.js" defer></script>
+</head>
+<body>
+<app-root></app-root>
+</body>
+</html>

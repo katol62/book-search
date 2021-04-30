@@ -1,0 +1,62 @@
+<div class="class" fxLayout fxFill fxLayoutAlign="space-around center">
+  <div fxLayout="column">
+    <div fxLayout="column" fxFlex="grow" fxLayoutAlign="start start" class="pb-4 pt-1">
+      <div class="pb-2">
+        <button mat-button mat-raised-button (click)="back()">
+          <mat-icon>arrow_back</mat-icon>Back
+        </button>
+      </div>
+      <div>
+        <h2>{{id ? 'Edit' : 'Create' }} card</h2>
+        <div>{{card ? card.card_nb : ''}}</div>
+      </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" autocomplete="on" method="POST" novalidate="novalidate">
+      <div fxLayout="column">
+        <ng-container *ngIf="isSuper">
+          <mat-form-field>
+            <mat-label>Admins</mat-label>
+            <mat-select
+              formControlName="owner"
+              (valueChange)="onAdmin($event)">
+              <mat-option [value]=""></mat-option>
+              <mat-option *ngFor="let admin of admins" [value]="admin.id">
+                {{admin.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+        <mat-form-field>
+          <mat-label>Companies</mat-label>
+          <mat-select
+            formControlName="company_id"
+            (valueChange)="onCompany($event)">
+            <mat-option [value]=""></mat-option>
+            <mat-option *ngFor="let company of companies" [value]="company.id">
+              {{company.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Life Time</mat-label>
+          <input matInput type="number" name="lifetime" formControlName="lifetime">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Service Time</mat-label>
+          <input matInput type="number" name="servicetime" formControlName="servicetime">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Prim</mat-label>
+          <textarea matInput formControlName="prim"></textarea>
+        </mat-form-field>
+        <input type="hidden" formControlName="test">
+        <mat-checkbox class="mat-primary" formControlName="isTest">Test</mat-checkbox>
+        <div class="mt-3 mb-3">
+          <button type="submit" mat-button mat-raised-button>Submit</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

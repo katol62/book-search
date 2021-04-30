@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>icon/recording/enabled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/recording/enabled" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="rec-ON" fill-rule="nonzero">
+            <path d="M14.5,0 C6.50472266,0 0,6.50472266 0,14.5 C0,22.4952773 6.50472266,29 14.5,29 C22.4952773,29 29,22.4952773 29,14.5 C29,6.50472266 22.4952773,0 14.5,0 Z" id="Shape" fill="#830018"></path>
+            <path d="M14.5,7.25 C10.502418,7.25 7.25,10.5023047 7.25,14.5 C7.25,18.4976953 10.502418,21.75 14.5,21.75 C18.497582,21.75 21.75,18.4976953 21.75,14.5 C21.75,10.5023047 18.497582,7.25 14.5,7.25 Z" id="Shape" fill="#E0042C"></path>
+            <path d="M7.25,14.5 C7.25,10.5023047 10.502418,7.25 14.5,7.25 L14.5,0 C6.50472266,0 0,6.50472266 0,14.5 C0,22.4952773 6.50472266,29 14.5,29 L14.5,21.75 C10.502418,21.75 7.25,18.4976953 7.25,14.5 Z" id="Shape" fill="#830018"></path>
+        </g>
+    </g>
+</svg>

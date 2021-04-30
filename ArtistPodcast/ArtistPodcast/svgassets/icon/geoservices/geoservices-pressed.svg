@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>icon/geoservices/pressed</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/geoservices/pressed" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Locationservices" fill="#B988FF">
+            <path d="M11.2932101,19.7050807 L11.2932101,9.96930058 C11.2932101,9.81009914 11.1633997,9.67906411 11.0041983,9.67906411 L0.789589195,9.67906411 C0.477309455,9.67906411 0.386687099,9.25289411 0.672025058,9.12675759 L20.0933757,0.526206145 C20.3358517,0.417214392 20.5832262,0.668262811 20.4730099,0.909514219 L11.844292,19.8250941 C11.7169309,20.1079828 11.2932101,20.0161358 11.2932101,19.7050807" id="Icon"></path>
+        </g>
+    </g>
+</svg>

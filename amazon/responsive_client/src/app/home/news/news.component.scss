@@ -1,0 +1,40 @@
+:host {
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+    }
+    .news-container {
+        border-top: 3px #3e647f solid;
+
+        iframe {
+            min-height: 200px !important;
+        }
+    }
+
+
+    /* Small devices (landscape phones, 576px and up) */
+    @media (max-width: 576px) {
+        .news-container {
+            iframe {
+                min-height: 340px !important;
+            }
+        }
+    }
+
+    /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+    @media (min-width: 577px) and (max-width: 768px) {
+        .news-container {
+            iframe {
+                min-height: 250px !important;
+            }
+        }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 768px) and (min-width: 1200px) {
+        .news-container {
+            iframe {
+                min-height: 230px !important;
+            }
+        }
+    }
+}

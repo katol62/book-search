@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="102px" viewBox="0 0 102 102" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>button/icon/stop/default</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="121.840095%" x2="50%" y2="-6.43119471%" id="linearGradient-1">
+            <stop stop-color="#DBDBDB" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M50.9223649,0 C22.8437297,0 0,22.8451216 0,50.9223649 C0,78.9996081 22.8437297,101.843338 50.9223649,101.843338 C79.001,101.843338 101.84473,79.001 101.84473,50.9223649 C101.84473,22.8437297 79.001,0 50.9223649,0 Z M50.9223649,90.8627027 C28.9068108,90.8627027 10.9889865,72.9504459 10.9889865,50.9237568 C10.9889865,28.9082027 28.9068108,10.9931622 50.9223649,10.9931622 C72.9434865,10.9931622 90.8557432,28.9068108 90.8557432,50.9237568 C90.8557432,72.9504459 72.9434865,90.8627027 50.9223649,90.8627027 Z M65.1029595,34.8223514 L38.2018649,34.8223514 C36.6888784,34.8223514 35.4584459,36.0583514 35.4584459,37.5657703 L35.4584459,64.4612973 C35.4584459,65.9784595 36.6888784,67.2158514 38.2018649,67.2158514 L65.1043514,67.2158514 C66.6159459,67.2158514 67.8477703,65.9784595 67.8477703,64.4612973 L67.8477703,37.5629865 C67.8463784,36.0555676 66.6145541,34.8223514 65.1029595,34.8223514 Z" id="path-2"></path>
+        <filter x="-15.7%" y="-13.7%" width="131.4%" height="131.4%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="button/icon/stop/default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Shape" fill-rule="nonzero">
+            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+            <use fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+        </g>
+    </g>
+</svg>

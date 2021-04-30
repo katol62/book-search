@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep {
+  .actions {
+    width: 120px !important;
+  }
+}

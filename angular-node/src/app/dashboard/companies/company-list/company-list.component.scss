@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep {
+  .actions {
+    width: 200px !important;
+  }
+  td.mat-cell {
+    &.inner {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+  .inner-table {
+    table {
+      width: 100%;
+      tr.mat-header-row {
+        display: none;
+      }
+      td.mat-cell {
+        background-color: aliceblue;
+      }
+    }
+  }
+}

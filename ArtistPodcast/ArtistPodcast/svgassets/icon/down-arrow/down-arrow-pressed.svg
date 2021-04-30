@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="14px" viewBox="0 0 25 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>icon/down-arrow/pressed</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/down-arrow/pressed" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="down-arrow" transform="translate(12.500000, 7.000000) rotate(-90.000000) translate(-12.500000, -7.000000) translate(6.000000, -5.000000)" fill="#D8D8D8" fill-rule="nonzero">
+            <g transform="translate(6.500000, 12.000000) scale(-1, 1) translate(-6.500000, -12.000000) " id="Shape">
+                <path d="M12.0897496,13.1882733 L2.62999313,23.5076889 C2.02823835,24.1644673 1.05259613,24.1644673 0.451133495,23.5076889 C-0.150377832,22.8514947 -0.150377832,21.7872109 0.451133495,21.1310698 L8.82155751,11.9999637 L0.451376943,2.86917636 C-0.150134384,2.21271661 -0.150134384,1.14853899 0.451376943,0.492344816 C1.05288827,-0.164114939 2.0284818,-0.164114939 2.63023657,0.492344816 L12.089993,10.8119198 C12.3907487,11.1401762 12.5409561,11.5699372 12.5409561,11.9999106 C12.5409561,12.4300965 12.3904565,12.8601762 12.0897496,13.1882733 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>
