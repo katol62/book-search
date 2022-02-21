@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BooksService} from "./services/books.service";
 import {HttpClientModule, HttpClient} from "@angular/common/http";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {StorageService} from "./services/storage.service";
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
         HttpClientModule,
         FormsModule
     ],
-  providers: [BooksService],
+  providers: [BooksService, StorageService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

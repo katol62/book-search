@@ -2,18 +2,35 @@ import {Component, OnInit} from '@angular/core';
 import {Book, BooksResult, BooksService} from "../../services/books.service";
 import {FormControl} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs/operators";
+import {Storage, StorageType, Unsubscribe} from "../../misc/decorators.hoc";
+import {Subscription} from "rxjs";
 
 const SEARCH: string = 'SEARCH';
 const FAVORITES: string = 'FAVORITES';
+
+export interface ISearchObject {
+    q?: any,
+    startIndex?: any,
+    maxResults?: any
+}
 
 @Component({
     selector: 'app-list',
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.scss']
 })
+
+@Unsubscribe()
 export class ListComponent implements OnInit {
 
-    favorites: string[] = [];
+    @Storage<string[]>(FAVORITES, StorageType.Session, [])
+    private favorites: string[];
+
+    @Storage<string>(SEARCH, StorageType.Session, '')
+    private searchString: string;
+
+    searchObject: ISearchObject;
+
     showFavorites: boolean = false;
 
     books: Book[] = [];
@@ -21,29 +38,34 @@ export class ListComponent implements OnInit {
     totalBooks: number = 0;
     search: FormControl = new FormControl();
     loading: boolean;
-
-    searchStart: number = 0;
-    searchOffset: number = 30;
+    error: any;
 
     throttle = 300;
     scrollDistance = 1;
+
+    private valueChangeSubscription: Subscription;
+    private loadSubscription: Subscription;
 
     constructor( private booksService: BooksService ) {
     }
 
     ngOnInit() {
-        const fav = JSON.parse(sessionStorage.getItem(FAVORITES));
-        this.favorites = fav ? fav : [];
-        this.search.setValue(this.getStored())
-        this.search.valueChanges
+        const s = this.searchString ? this.searchString : '';
+        this.searchObject = {q: this.searchString, startIndex: 0, maxResults: 30}
+        this.search.setValue(s);
+        this.valueChangeSubscription = this.search.valueChanges
             .pipe(
                 debounceTime(1000),
                 distinctUntilChanged()
             )
             .subscribe( value => {
                 this.books = [];
-                this.searchStart = 0;
-                sessionStorage.setItem(SEARCH, value)
+                // this.searchStart = 0;
+                this.searchString = value;
+                this.searchObject = {
+                    ...this.searchObject,
+                    q: this.searchString
+                }
                 this.loadBooks()
             })
 
@@ -51,8 +73,9 @@ export class ListComponent implements OnInit {
     }
 
     loadBooks() {
-        const q = this.search.value ? this.search.value : null;
-        this.booksService.getBooks(q, this.searchStart, this.searchOffset)
+        this.error = null;
+        const s = this.searchObject;
+        this.loadSubscription = this.booksService.getBooks(s.q, s.startIndex, s.maxResults)
             .subscribe({
                 next: (result: BooksResult) => {
                     this.totalBooks = result.totalItems;
@@ -60,14 +83,23 @@ export class ListComponent implements OnInit {
                     this.filtered = this.showFavorites ? this.books.filter(book => book.favorite) : [...this.books];
                 },
                 error: err => {
+                    this.totalBooks = 0;
+                    this.books = [];
+                    this.filtered = [];
+                    this.error = err.error && err.error.error && err.error.error.message ? err.error.error.message : (err.message ? err.message : 'Unknown error');
                 }
             })
     }
 
     onScroll(event) {
         console.log('scrolled!!');
-        const offset = this.searchStart + this.searchOffset > this.totalBooks ? this.totalBooks - this.searchStart : this.searchOffset;
-        this.searchStart += offset;
+        const offset = this.searchObject.startIndex + this.searchObject.maxResults > this.totalBooks ? this.totalBooks - this.searchObject.startIndex : this.searchObject.maxResults;
+        const start = this.searchObject.startIndex + offset;
+        this.searchObject = {
+            ...this.searchObject,
+            startIndex: start
+        }
+        // this.searchStart += offset;
         this.loadBooks();
     }
 
@@ -79,8 +111,6 @@ export class ListComponent implements OnInit {
         const stored = sessionStorage.getItem(SEARCH);
         return stored ? stored : null;
     }
-
-    private getFavorites
 
     toggleFavorites(book: Book) {
         book.favorite = !book.favorite;
