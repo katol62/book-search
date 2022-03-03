@@ -24,7 +24,7 @@ export class StorageService {
     }
 
     setItem(type: string, data: any) {
-        const isString = typeof (data) === 'string' ? true : false;
+        const isString = typeof (data) === 'string';
         this.storage[this.type].setItem(type, isString ? data : JSON.stringify(data));
     }
 
@@ -68,7 +68,7 @@ export class StorageService {
     }
 
     setItemTo(storageType: string, type: string, data: any) {
-        const isString = typeof (data) === 'string' ? true : false;
+        const isString = typeof (data) === 'string';
         this.storage[storageType].setItem(type, isString ? data : JSON.stringify(data));
     }
 

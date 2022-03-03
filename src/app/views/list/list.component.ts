@@ -75,6 +75,12 @@ export class ListComponent implements OnInit {
     loadBooks() {
         this.error = null;
         const s = this.searchObject;
+        if (!s.q || s.q === '') {
+            this.totalBooks = 0;
+            this.books = [];
+            this.filtered = [];
+            return;
+        }
         this.loadSubscription = this.booksService.getBooks(s.q, s.startIndex, s.maxResults)
             .subscribe({
                 next: (result: BooksResult) => {
