@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {ISearchObject} from "../views/list/list.component";
+import {Observable} from "rxjs";
 
 export interface Book {
     id: string;
@@ -20,12 +22,17 @@ export interface BooksResult {
 export class BooksService {
 
     private key: string = 'AIzaSyDorwKcoAq4X6LrWU5ojreQVKA6EOdqETw';
+    private API_PATH: string = `https://www.googleapis.com/books/v1/volumes`;
 
-    constructor( private http: HttpClient ) {
+    constructor( private http: HttpClient ) {}
+
+    public loadBooks(so: Partial<ISearchObject>): Observable<any> {
+        let params: HttpParams = new HttpParams({fromObject: {...so, key: this.key} as any});
+        return this.http.get(this.API_PATH, {params: params})
     }
 
-    public getBooks( q: string, start: number, offset: number ) {
-        return this.http.get(`https://www.googleapis.com/books/v1/volumes?keyes&key=${this.key}&q=${q}&startIndex=${start}&maxResults=${offset}`);
-    }
+    // private parseParams(o: Object): HttpParams {
+    //     return Object.entries(o).reduce((params, [key, value]) => params.set(key, value), new HttpParams());
+    // }
 
 }

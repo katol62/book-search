@@ -9,9 +9,10 @@ const SEARCH: string = 'SEARCH';
 const FAVORITES: string = 'FAVORITES';
 
 export interface ISearchObject {
-    q?: any,
-    startIndex?: any,
-    maxResults?: any
+    q?: string,
+    startIndex?: number,
+    maxResults?: number,
+    key?: string
 }
 
 @Component({
@@ -81,7 +82,7 @@ export class ListComponent implements OnInit {
             this.filtered = [];
             return;
         }
-        this.loadSubscription = this.booksService.getBooks(s.q, s.startIndex, s.maxResults)
+        this.loadSubscription = this.booksService.loadBooks(this.searchObject)
             .subscribe({
                 next: (result: BooksResult) => {
                     this.totalBooks = result.totalItems;
