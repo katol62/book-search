@@ -1,10 +1,6 @@
-import {StorageService} from "../services/storage.service";
+import {StorageService, StorageType} from "../services/storage.service";
 import {Injector} from "@angular/core";
 import {Subscription} from "rxjs";
-
-export enum StorageType {
-    Local = 'Local', Session = 'Session'
-}
 
 export const check = (raw: string) => {
     try {

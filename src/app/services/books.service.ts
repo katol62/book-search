@@ -2,12 +2,15 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {ISearchObject} from "../views/list/list.component";
 import {Observable} from "rxjs";
+import {shareReplay} from "rxjs/operators";
 
 export interface Book {
     id: string;
     volumeInfo?: {
         title: string;
         subtitle: string;
+        authors: [string];
+        description: string;
     },
     favorite?: boolean;
 }
@@ -28,7 +31,7 @@ export class BooksService {
 
     public loadBooks(so: Partial<ISearchObject>): Observable<any> {
         let params: HttpParams = new HttpParams({fromObject: {...so, key: this.key} as any});
-        return this.http.get(this.API_PATH, {params: params})
+        return this.http.get(this.API_PATH, {params: params}).pipe(shareReplay())
     }
 
     // private parseParams(o: Object): HttpParams {

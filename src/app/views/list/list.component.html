@@ -2,8 +2,9 @@
     <div class="row pb-5 pt-3">
         <div class="col-12">
             <div class="input-group mb-2">
-                <input [formControl]="search"
-                       type="search"
+                <input
+                    #searchInput
+                    type="search"
                        class="form-control" placeholder="Start typing to search books...">
             </div>
         </div>
@@ -34,8 +35,15 @@
                      (scrolledUp)="onUp($event)"
                 >
                     <div class="col-12 pb-3 pt-3 border-top" *ngFor="let book of filtered">
-                        <strong>TITLE: </strong> {{book.volumeInfo.title}}<br/>
-                        <a role="button" class="btn" [ngClass]="book.favorite ? 'btn-warning' : 'btn-success'" (click)="toggleFavorites(book)">{{book.favorite ? 'Remove from favorites' : 'Add to favorites'}}</a>
+                        <div class="d-flex justify-content-between">
+                            <span class="d-flex flex-column">
+                                <span><strong>TITLE: </strong> {{book.volumeInfo.title}}</span>
+                                <span><strong>AUTHORS: </strong> {{book.volumeInfo.authors}}</span>
+                            </span>
+                            <span class="d-flex">
+                                <a role="button" class="btn d-inline float-right" [ngClass]="book.favorite ? 'btn-warning' : 'btn-success'" (click)="toggleFavorites(book)">{{book.favorite ? 'Remove from favorites' : 'Add to favorites'}}</a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,5 +51,8 @@
         </ng-container>
 
     </div>
+    <ngx-bootstrap-spinner
+        bdColor="rgba(51,51,51,0.4)"
+    ></ngx-bootstrap-spinner>
 
 </div>

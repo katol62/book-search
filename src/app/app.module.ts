@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {Injector, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -10,6 +10,7 @@ import {BooksService} from "./services/books.service";
 import {HttpClientModule, HttpClient} from "@angular/common/http";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {StorageService} from "./services/storage.service";
+import {NgxSpinnerModule} from "ngx-bootstrap-spinner";
 
 
 @NgModule({
@@ -23,9 +24,11 @@ import {StorageService} from "./services/storage.service";
         ReactiveFormsModule,
         InfiniteScrollModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        NgxSpinnerModule
     ],
-  providers: [BooksService, StorageService],
-  bootstrap: [AppComponent]
+    providers: [BooksService, StorageService],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

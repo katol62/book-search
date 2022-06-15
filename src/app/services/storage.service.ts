@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import {StorageType} from "../misc/decorators.hoc";
+
+export enum StorageType {
+    Local = 'Local', Session = 'Session'
+}
 
 @Injectable({
   providedIn: 'root'
