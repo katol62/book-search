@@ -85,9 +85,7 @@ export class ListComponent implements OnInit, AfterViewInit {
                                 this.filtered = this.showFavorites ? this.books.filter(book => book.favorite) : [...this.books];
                             },
                             error: err => {
-                                this.totalBooks = 0;
-                                this.books = [];
-                                this.filtered = [];
+                                this.resetData();
                                 this.error = err.error && err.error.error && err.error.error.message ? err.error.error.message : (err.message ? err.message : 'Unknown error');
                             },
 
