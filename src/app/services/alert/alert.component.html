@@ -1,0 +1,9 @@
+<div class="books-alert" *ngIf="config?.isOpen">
+    <alert type="{{config?.type}}"
+           [dismissible]="config?.dismissible"
+           (onClosed)="onClose($event)"
+           [dismissOnTimeout]="config?.dismissOnTimeout">
+        <h4 class="alert-heading">{{config?.heading}}</h4>
+        <p>{{config?.message}}</p>
+    </alert>
+</div>

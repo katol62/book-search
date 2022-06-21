@@ -11,12 +11,16 @@ import {HttpClientModule, HttpClient} from "@angular/common/http";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {StorageService} from "./services/storage.service";
 import {NgxSpinnerModule} from "ngx-bootstrap-spinner";
+import { AlertComponent } from './services/alert/alert.component';
+import {AlertConfig, AlertModule} from "ngx-bootstrap/alert";
+import {AlertService} from "./services/alert/alert.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    AlertComponent
   ],
     imports: [
         BrowserModule,
@@ -25,9 +29,10 @@ import {NgxSpinnerModule} from "ngx-bootstrap-spinner";
         InfiniteScrollModule,
         HttpClientModule,
         FormsModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        AlertModule
     ],
-    providers: [BooksService, StorageService],
+    providers: [BooksService, StorageService, AlertService, AlertConfig],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent]
 })

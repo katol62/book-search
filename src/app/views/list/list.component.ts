@@ -1,9 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Book, BooksResult, BooksService} from "../../services/books.service";
-import {FormControl} from "@angular/forms";
-import {debounceTime, delay, distinctUntilChanged, finalize, map, shareReplay, startWith, switchMap} from "rxjs/operators";
+import {debounceTime, distinctUntilChanged, map, shareReplay, startWith, switchMap} from "rxjs/operators";
 import {Storage, Unsubscribe} from "../../misc/decorators.hoc";
-import {BehaviorSubject, EMPTY, fromEvent, Observable, of, Subscription} from "rxjs";
+import {BehaviorSubject, EMPTY, fromEvent, of, Subscription} from "rxjs";
 import { NgxSpinnerService } from "ngx-bootstrap-spinner";
 import {StorageType} from "../../services/storage.service";
 
@@ -105,6 +104,7 @@ export class ListComponent implements OnInit, AfterViewInit {
             fromEvent(this.searchInput.nativeElement, 'keyup')
                 .pipe(
                     map((res: any) => res?.target.value),
+                    startWith(''),
                     debounceTime(500),
                     distinctUntilChanged(),
                 )

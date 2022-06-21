@@ -1,0 +1,21 @@
+:host {
+    .books-alert {
+        $transition: all 0.3s ease;
+
+        position: fixed;
+        top: 1%;
+        right: 1%;
+        min-width: 300px;
+        max-width: 500px;
+        max-height: 100%;
+
+        z-index: 9999;
+        overflow: auto;
+
+        -webkit-transition: $transition;
+        -moz-transition: $transition;
+        -ms-transition: $transition;
+        -o-transition: $transition;
+        transition: $transition;
+    }
+}

@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {ISearchObject} from "../views/list/list.component";
-import {Observable} from "rxjs";
-import {shareReplay} from "rxjs/operators";
+import {Observable, throwError} from "rxjs";
+import {catchError, map, shareReplay} from "rxjs/operators";
+import {AlertService, EAlertType} from "./alert/alert.service";
 
 export interface Book {
     id: string;
@@ -27,11 +28,22 @@ export class BooksService {
     private key: string = 'AIzaSyDorwKcoAq4X6LrWU5ojreQVKA6EOdqETw';
     private API_PATH: string = `https://www.googleapis.com/books/v1/volumes`;
 
-    constructor( private http: HttpClient ) {}
+    constructor( private http: HttpClient, private alertService: AlertService ) {}
 
     public loadBooks(so: Partial<ISearchObject>): Observable<any> {
         let params: HttpParams = new HttpParams({fromObject: {...so, key: this.key} as any});
-        return this.http.get(this.API_PATH, {params: params}).pipe(shareReplay())
+        return this.http.get(this.API_PATH, {params}).pipe(
+            shareReplay(),
+            map((result: any) => {
+                this.alertService.show({type: EAlertType.SUCCESS, heading: 'Success', message: 'Data loaded'});
+                return result;
+            }),
+            catchError((error: HttpErrorResponse) => {
+                this.alertService.show({type: EAlertType.DANGER, heading: 'Error', message: error.statusText})
+                return throwError(error);
+            })
+
+        )
     }
 
     // private parseParams(o: Object): HttpParams {
