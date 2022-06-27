@@ -28,8 +28,8 @@ export class AlertComponent implements OnInit {
     }
 
     onClose(event) {
-        this.config.isOpen = false;
         console.log(event)
+        this.alertService.hide({...this.config});
     }
 
 }
