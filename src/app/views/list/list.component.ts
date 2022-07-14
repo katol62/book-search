@@ -1,10 +1,11 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Book, BooksResult, BooksService} from "../../services/books.service";
 import {debounceTime, distinctUntilChanged, map, shareReplay, startWith, switchMap} from "rxjs/operators";
-import {Storage, Unsubscribe} from "../../misc/decorators.hoc";
+import {Confirmable, Storage, Unsubscribe} from "../../misc/decorators.hoc";
 import {BehaviorSubject, EMPTY, fromEvent, of, Subscription} from "rxjs";
 import { NgxSpinnerService } from "ngx-bootstrap-spinner";
 import {StorageType} from "../../services/storage.service";
+import {ConfirmService, IConfirm} from "../../services/confirm.service";
 
 const SEARCH: string = 'SEARCH';
 const FAVORITES: string = 'FAVORITES';
@@ -54,7 +55,7 @@ export class ListComponent implements OnInit, AfterViewInit {
     private valueChangeSubscription: Subscription = new Subscription();
     private loadSubscription: Subscription;
 
-    constructor( private booksService: BooksService, private spinner: NgxSpinnerService ) {}
+    constructor( private booksService: BooksService, private spinner: NgxSpinnerService, private confirmService: ConfirmService) {}
 
     ngOnInit() {
 
@@ -139,6 +140,7 @@ export class ListComponent implements OnInit, AfterViewInit {
         console.log('scrolled up!', event);
     }
 
+    @Confirmable({ message: 'Are you sure?', title: 'Confirm', alertMode: false, error: false})
     toggleFavorites(book: Partial<Book>): void {
         book.favorite = !book.favorite;
         if (book.favorite) {

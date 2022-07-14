@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,13 +14,17 @@ import {NgxSpinnerModule} from "ngx-bootstrap-spinner";
 import { AlertComponent } from './services/alert/alert.component';
 import {AlertConfig, AlertModule} from "ngx-bootstrap/alert";
 import {AlertService} from "./services/alert/alert.service";
+import { ConfirmComponent } from './services/confirm/confirm.component';
+import {BsModalRef, BsModalService, ModalModule} from "ngx-bootstrap/modal";
+import {ConfirmService} from "./services/confirm.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    AlertComponent
+    AlertComponent,
+    ConfirmComponent
   ],
     imports: [
         BrowserModule,
@@ -30,10 +34,16 @@ import {AlertService} from "./services/alert/alert.service";
         HttpClientModule,
         FormsModule,
         NgxSpinnerModule,
-        AlertModule
+        AlertModule,
+        ModalModule.forRoot()
     ],
-    providers: [BooksService, StorageService, AlertService, AlertConfig],
+    providers: [BooksService, StorageService, AlertService, AlertConfig, BsModalService, ConfirmService, BsModalRef],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+    static injector : Injector = null;
+    constructor(public injector: Injector) {
+        AppModule.injector = injector;
+    }
+}

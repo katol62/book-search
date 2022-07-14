@@ -1,6 +1,11 @@
 import {StorageService, StorageType} from "../services/storage.service";
-import {Injector} from "@angular/core";
+import {inject, InjectionToken, Injector, Renderer2, RendererFactory2} from "@angular/core";
 import {Subscription} from "rxjs";
+import {ConfirmService, IConfirm} from "../services/confirm.service";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {ConfirmComponent} from "../services/confirm/confirm.component";
+import {AppModule} from "../app.module";
+
 
 export const check = (raw: string) => {
     try {
@@ -66,4 +71,21 @@ export function Unsubscribe(): ClassDecorator {
             }
         }
     }
+}
+
+export function Confirmable(options?: IConfirm): MethodDecorator {
+    return function(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
+        const originalMethod = descriptor.value;
+
+        descriptor.value = async function ( ...args: any[] ) {
+            const service = AppModule?.injector.get(ConfirmService);
+            const result = await service.confirm({...options});
+            if (result) {
+                const final = originalMethod.apply(this, args);
+                return final;
+            }
+        }
+        return descriptor;
+    }
+
 }
